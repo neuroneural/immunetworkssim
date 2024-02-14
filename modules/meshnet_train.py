@@ -69,7 +69,7 @@ class training():
                     result =  self.dist.get_gradients(self.url, self.runid, self.keys)
 
                 agg_grad = [np.array(array) for array in ast.literal_eval(result['result'])]
-
+                print(agg_grad)
                 with torch.no_grad():
                     for param, avg_grad in zip(self.model.parameters(), agg_grad):
                         if param.requires_grad:

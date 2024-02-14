@@ -39,7 +39,7 @@ def call_training(run_id):
         dbfile='./scripts/mindboggle.db', 
         dist =distributed,
         classes=3, 
-        epochs = 1, 
+        epochs = 5, 
         cubes=1, 
         label = 'GWlabels', 
         keys = app.config['global_variables']['keys'], 
