@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #71b6e4; /* Plain color background */
+}
+
+.container {
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 3em;
+    color: #fff; /* Text color for heading */
+}
+
+.container p {
+    font-size: 1.5em;
+    color: #ecf0f1; /* Text color for paragraph */
+}
+
+/* Existing styles */
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db; /* Button background color */
+    color: #fff; /* Text color */
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #053c61; /* Button background color on hover */
+}
+
+.container1 {
+    text-align: center;
+}
+.container1 h2 {
+    text-align: center;
+}
+
+.container1 label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.container1 input[type="text"],
+.container1 input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.container1 button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.container1 button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.container1 message-box {
+    position: absolute;
+    top: -50px; /* Adjust as needed */
+    left: 0;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: fit-content;
+}

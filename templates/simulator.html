@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immunetworks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='simulator.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="header-options">
+            <a onclick="window.location.href = '/runs_home'" class="header-option">Home Page</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Simulator Dashboard</h1>
+        <h2>Run ID: {{ runid }}</h2>
+        <h3>Status: <span class="status-symbol">{{ 'Running' if status == 1 else 'Not Running' }}</span></h3>
+
+        <h4>Simulation Details:</h4>
+        <ul>
+            <li><strong>Description:</strong> {{ data["body"][runid]["description"] }}</li>
+            <li><strong>Name:</strong> {{ data["body"][runid]["name"] }}</li>
+            <li><strong>Number of Users:</strong> {{ data["body"][runid]["users"]|length }}</li>
+            <li><strong>Classes:</strong> {{ data["body"][runid]["classes"] }}</li>
+        </ul>
+
+        <div class="button-container">
+            {% if status == 0 %}
+            <button class="button" onclick="startSimulation('{{ runid }}')"><i class="fas fa-play-circle"></i> Start Simulation</button>
+            {% else %}
+            <button class="button" onclick="viewSimulation()"><i class="fas fa-eye"></i> View Simulation</button>
+            {% endif %}
+        </div>
+    </div>
+
+<script>
+    function startSimulation(runId) {
+        window.location.href = '/start_simulation?run_id=' + '{{ runid }}';
+    }
+
+    function viewSimulation() {
+        // Add logic to view the simulation
+        window.location.href = '/view_simulation?run_id=' + '{{ runid }}';
+    }
+</script>
+</body>
+</html>

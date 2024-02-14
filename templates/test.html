@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+
+<body>
+    <h1>Data Visualization</h1>
+
+    <!-- Placeholder for charts -->
+    <div id="charts-container">
+        <!-- Charts will be dynamically added here -->
+    </div>
+
+    <script>
+        // Get data from the fetched_data variable
+        var fetchedData = {
+            'train': [
+                ['Run id', 'Column1', 'Column2'],
+                [1, 10, 20],
+                [2, 15, 25],
+                [3, 20, 30]
+            ],
+            'valid': [
+                ['Run id', 'Column1', 'Column2'],
+                [1, 8, 18],
+                [2, 12, 22],
+                [3, 18, 28]
+            ]
+        };
+
+        // Function to create a line chart
+        function createLineChart(containerId, columnNames, data) {
+            var canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 300;
+            document.getElementById(containerId).appendChild(canvas);
+
+            var ctx = canvas.getContext('2d');
+
+            var colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown']; // Define colors for lines
+
+            var datasets = [];
+            for (var i = 1; i < columnNames.length; i++) {
+                var columnName = columnNames[i];
+                var columnData = data.map(row => row[i]);
+                datasets.push({
+                    label: columnName,
+                    data: columnData,
+                    borderColor: colors[i % colors.length], // Cycle through colors
+                    fill: false
+                });
+            }
+
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.map(row => row[0]), // Assuming first column is labels
+                    datasets: datasets
+                }
+            });
+        }
+
+        // Create line charts for train data
+        var trainContainer = document.createElement('div');
+        trainContainer.innerHTML = '<h2>Train Data Charts</h2>';
+        document.getElementById('charts-container').appendChild(trainContainer);
+        createLineChart(trainContainer.id, fetchedData['train'][0], fetchedData['train'].slice(1));
+
+        // Create line charts for validation data
+        var validContainer = document.createElement('div');
+        validContainer.innerHTML = '<h2>Validation Data Charts</h2>';
+        document.getElementById('charts-container').appendChild(validContainer);
+        createLineChart(validContainer.id, fetchedData['valid'][0], fetchedData['valid'].slice(1));
+    </script>
+</body>
+
+</html>

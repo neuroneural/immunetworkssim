@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+</head>
+<body>
+    <h1>Train Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Run id</th>
+                {% for column_name in fetched_data['train'][0] %}
+                    <th>{{ column_name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in fetched_data['train'][1] %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Valid Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Run id</th>
+                {% for column_name in fetched_data['valid'][0] %}
+                    <th>{{ column_name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in fetched_data['valid'][1] %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

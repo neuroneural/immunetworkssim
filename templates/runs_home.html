@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='runs_home.css') }}">
+    <title>Immunetworks</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header-options">
+            <a onclick="window.location.href = '/runs_home'" class="header-option">Home Page</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <div class="option" onclick="toggleComponent()">Distributed Computations</div>
+        </div>
+        <div class="table-container" id="contentContainer" style="display:none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Classes</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="dataBody">
+                    {% for key in data.body|sort %}
+                        {% set item = data.body[key] %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.description }}</td>
+                            <td>{{ item.classes }}</td>
+                            <td><button onclick="window.location.href = '/computation?run_id=' + '{{ key }}'">Simulator</button></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function toggleComponent() {
+            const contentContainer = document.getElementById("contentContainer");
+            contentContainer.style.display = contentContainer.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</body>
+</html>
